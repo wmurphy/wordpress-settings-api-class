@@ -271,10 +271,10 @@ class WeDevs_Settings_API {
 
         $value = $this->get_option( $args['id'], $args['section'], $args['std'] );
         $size = isset( $args['size'] ) && !is_null( $args['size'] ) ? $args['size'] : '500px';
-
+        $textarea_name = esc_attr( $args['section'] . '[' . $args['id'] . ']' );
         echo '<div style="width: ' . $size . ';">';
 
-        wp_editor( $value, $args['section'] . '-' . $args['id'] . '', array( 'teeny' => true, 'textarea_name' => $args['section'] . '[' . $args['id'] . ']', 'textarea_rows' => 10 ) );
+        wp_editor( $value, $args['id'], array( 'textarea_name' => $textarea_name,'teeny' => false, 'textarea_rows' => 10,'media_buttons' => false,'tinymce' => array( 'plugins' => 'wordpress' ) ) );
 
         echo '</div>';
 
